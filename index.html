@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="nl" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GroenVooruit - Elektrische Verduurzaming</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    * {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-gradient {
+      background: linear-gradient(135deg, #051f15 0%, #064e3b 50%, #047857 100%);
+    }
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-hover:hover {
+      transform: translateY(-8px);
+    }
+    .pulse-glow {
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(16, 185, 129, 0.5); }
+    }
+    .float {
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    .stagger-1 { animation-delay: 0s; }
+    .stagger-2 { animation-delay: 0.1s; }
+    .stagger-3 { animation-delay: 0.2s; }
+    .fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+      opacity: 0;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-gray-950">
+  <div id="app" class="w-full h-full overflow-auto bg-gray-950"><!-- Navigation -->
+   <nav class="fixed top-0 left-0 right-0 z-50 bg-gray-950/90 backdrop-blur-md border-b border-emerald-900/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="flex justify-between items-center h-16 sm:h-20">
+      <div class="flex items-center gap-2 sm:gap-3">
+       <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl flex items-center justify-center pulse-glow">
+        <svg class="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+       </div><span id="nav-company" class="text-xl sm:text-2xl font-bold text-white">GroenVooruit</span>
+      </div>
+      <div class="hidden md:flex items-center gap-8"><a href="#producten" class="text-gray-300 hover:text-emerald-400 font-medium transition-colors">Producten</a> <a href="#voordelen" class="text-gray-300 hover:text-emerald-400 font-medium transition-colors">Voordelen</a> <a href="#contact" class="text-gray-300 hover:text-emerald-400 font-medium transition-colors">Contact</a>
+      </div><button id="nav-cta" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-full font-semibold transition-all hover:shadow-lg hover:shadow-emerald-500/30 text-sm sm:text-base"> Offerte aanvragen </button>
+     </div>
+    </div>
+   </nav><!-- Hero Section -->
+   <section class="hero-gradient pt-28 sm:pt-32 pb-16 sm:pb-24 relative overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden">
+     <div class="absolute -top-40 -right-40 w-80 h-80 bg-emerald-500/20 rounded-full blur-3xl float"></div>
+     <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-green-500/20 rounded-full blur-3xl float stagger-2"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+     <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div class="text-center lg:text-left">
+       <div class="inline-flex items-center gap-2 bg-emerald-900/50 backdrop-blur px-4 py-2 rounded-full mb-6 fade-in stagger-1"><span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span> <span class="text-emerald-300 font-medium text-sm">100% Duurzame Energie</span>
+       </div>
+       <h1 id="hero-title" class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight fade-in stagger-2">Verduurzaam uw <span class="gradient-text">woning</span></h1>
+       <p id="hero-subtitle" class="text-lg sm:text-xl text-gray-300 mb-8 max-w-xl mx-auto lg:mx-0 fade-in stagger-3">Met zonnepanelen, thuisbatterijen en warmtepompen bespaart u op energiekosten én draagt u bij aan een groenere toekomst.</p>
+       <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start fade-in stagger-3"><button id="hero-cta" class="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all hover:shadow-xl hover:shadow-emerald-500/30 hover:scale-105"> Gratis adviesgesprek → </button> <button class="bg-gray-800 hover:bg-gray-700 text-gray-100 px-8 py-4 rounded-full font-semibold text-lg border-2 border-gray-700 transition-all hover:border-emerald-500"> Bekijk projecten </button>
+       </div><!-- Stats -->
+       <div class="grid grid-cols-3 gap-4 sm:gap-8 mt-12 pt-8 border-t border-emerald-900/50">
+        <div class="text-center lg:text-left">
+         <div class="text-2xl sm:text-3xl font-bold text-emerald-400">
+          2.500+
+         </div>
+         <div class="text-gray-400 text-sm sm:text-base">
+          Installaties
+         </div>
+        </div>
+        <div class="text-center lg:text-left">
+         <div class="text-2xl sm:text-3xl font-bold text-emerald-400">
+          98%
+         </div>
+         <div class="text-gray-400 text-sm sm:text-base">
+          Tevreden klanten
+         </div>
+        </div>
+        <div class="text-center lg:text-left">
+         <div class="text-2xl sm:text-3xl font-bold text-emerald-400">
+          15 jaar
+         </div>
+         <div class="text-gray-400 text-sm sm:text-base">
+          Garantie
+         </div>
+        </div>
+       </div>
+      </div><!-- Hero Visual -->
+      <div class="relative flex justify-center lg:justify-end">
+       <div class="relative w-72 h-72 sm:w-96 sm:h-96">
+        <div class="absolute inset-0 bg-gradient-to-br from-emerald-500 to-green-600 rounded-3xl rotate-6 opacity-20"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-emerald-500 to-green-700 rounded-3xl flex items-center justify-center">
+         <svg class="w-40 h-40 sm:w-52 sm:h-52 text-white/90 float" viewbox="0 0 100 100" fill="none"><!-- House --> <path d="M50 15L15 40V85H85V40L50 15Z" fill="currentColor" opacity="0.3" /> <path d="M50 15L15 40V85H85V40L50 15Z" stroke="currentColor" stroke-width="2" fill="none" /> <!-- Solar panels on roof --> <rect x="25" y="28" width="12" height="8" fill="currentColor" opacity="0.8" transform="rotate(-25 31 32)" /> <rect x="40" y="22" width="12" height="8" fill="currentColor" opacity="0.8" transform="rotate(-25 46 26)" /> <rect x="55" y="28" width="12" height="8" fill="currentColor" opacity="0.8" transform="rotate(25 61 32)" /> <!-- Sun rays --> <circle cx="80" cy="20" r="8" fill="currentColor" opacity="0.6" /> <path d="M80 8V5M80 35V32M68 20H65M95 20H92M71 11L69 9M91 31L89 29M71 29L69 31M91 9L89 11" stroke="currentColor" stroke-width="1.5" opacity="0.6" /> <!-- Door --> <rect x="42" y="60" width="16" height="25" fill="currentColor" opacity="0.5" /> <!-- Windows --> <rect x="25" y="55" width="12" height="12" fill="currentColor" opacity="0.4" /> <rect x="63" y="55" width="12" height="12" fill="currentColor" opacity="0.4" /> <!-- Lightning bolt (energy) --> <path d="M50 45L45 55H50L48 65L55 52H50L52 45H50Z" fill="currentColor" />
+         </svg>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Products Section -->
+   <section id="producten" class="py-16 sm:py-24 bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-12 sm:mb-16"><span class="text-emerald-400 font-semibold text-sm uppercase tracking-wider">Wat wij bieden</span>
+      <h2 id="products-title" class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-3">Onze Oplossingen</h2>
+      <p class="text-gray-400 mt-4 max-w-2xl mx-auto text-base sm:text-lg">Complete verduurzamingsoplossingen voor uw woning, van advies tot installatie en onderhoud.</p>
+     </div>
+     <div class="grid md:grid-cols-3 gap-6 sm:gap-8"><!-- Zonnepanelen Card -->
+      <div class="card-hover bg-gradient-to-br from-amber-900/20 to-orange-900/20 rounded-3xl p-6 sm:p-8 border border-amber-700/50 group">
+       <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+        <svg class="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" /> <circle cx="12" cy="12" r="4" stroke-width="1.5" />
+        </svg>
+       </div>
+       <h3 id="solar-title" class="text-xl sm:text-2xl font-bold text-white mb-3">Zonnepanelen</h3>
+       <p class="text-gray-300 mb-6 text-sm sm:text-base">Hoogrenderende zonnepanelen die uw energierekening drastisch verlagen. Gemiddeld 70% besparing op uw stroomkosten.</p>
+       <ul class="space-y-3">
+        <li class="flex items-center gap-3 text-gray-300 text-sm sm:text-base">
+         <svg class="w-5 h-5 text-amber-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+         </svg> Tot 420Wp per paneel</li>
+        <li class="flex items-center gap-3 text-gray-300 text-sm sm:text-base">
+         <svg class="w-5 h-5 text-amber-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+         </svg> 25 jaar productgarantie</li>
+        <li class="flex items-center gap-3 text-gray-300 text-sm sm:text-base">
+         <svg class="w-5 h-5 text-amber-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+         </svg> Binnen 6 jaar terugverdiend</li>
+       </ul>
+      </div><!-- Thuisbatterijen Card -->
+      <div class="card-hover bg-gradient-to-br from-emerald-900/20 to-teal-900/20 rounded-3xl p-6 sm:p-8 border border-emerald-700/50 group relative overflow-hidden">
+       <div class="absolute top-4 right-4 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+        Populair
+       </div>
+       <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+        <svg class="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><rect x="6" y="4" width="12" height="16" rx="2" stroke-width="1.5" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 2v2M14 2v2M10 8v4l2 2 2-2V8" />
+        </svg>
+       </div>
+       <h3 id="battery-title" class="text-xl sm:text-2xl font-bold text-white mb-3">Thuisbatterijen</h3>
+       <p class="text-gray-300 mb-6 text-sm sm:text-base">Sla uw zelf opgewekte energie op en gebruik het wanneer u het nodig heeft. Maximale onafhankelijkheid van het net.</p>
+       <ul class="space-y-3">
+        <li class="flex items-center gap-3 text-gray-300 text-sm sm:text-base">
+         <svg class="w-5 h-5 text-emerald-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+         </svg> Capaciteit 5-15 kWh</li>
+        <li class="flex items-center gap-3 text-gray-300 text-sm sm:text-base">
+         <svg class="w-5 h-5 text-emerald-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+         </svg> Slimme energiesturing</li>
+        <li class="flex items-center gap-3 text-gray-300 text-sm sm:text-base">
+         <svg class="w-5 h-5 text-emerald-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+         </svg> Noodstroomfunctie</li>
+       </ul>
+      </div><!-- Warmtepompen Card -->
+      <div class="card-hover bg-gradient-to-br from-sky-900/20 to-blue-900/20 rounded-3xl p-6 sm:p-8 border border-sky-700/50 group">
+       <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-sky-400 to-blue-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+        <svg class="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l2 2" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 14c0-2.21 1.79-4 4-4s4 1.79 4 4" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 16v2M8 18l1-1M16 18l-1-1" />
+        </svg>
+       </div>
+       <h3 id="heatpump-title" class="text-xl sm:text-2xl font-bold text-white mb-3">Warmtepompen</h3>
+       <p class="text-gray-300 mb-6 text-sm sm:text-base">Verwarm en koel uw woning efficiënt met een warmtepomp. Tot 4x efficiënter dan traditionele verwarming.</p>
+       <ul class="space-y-3">
+        <li class="flex items-center gap-3 text-gray-300 text-sm sm:text-base">
+         <svg class="w-5 h-5 text-sky-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+         </svg> Lucht/water systemen</li>
+        <li class="flex items-center gap-3 text-gray-300 text-sm sm:text-base">
+         <svg class="w-5 h-5 text-sky-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+         </svg> COP tot 5.0</li>
+        <li class="flex items-center gap-3 text-gray-300 text-sm sm:text-base">
+         <svg class="w-5 h-5 text-sky-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+         </svg> Subsidie beschikbaar</li>
+       </ul>
+      </div>
+     </div>
+    </div>
+   </section><!-- Benefits Section -->
+   <section id="voordelen" class="py-16 sm:py-24 bg-gray-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-12 sm:mb-16"><span class="text-emerald-400 font-semibold text-sm uppercase tracking-wider">Waarom kiezen voor ons</span>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-3">Uw voordelen bij GroenVooruit</h2>
+     </div>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+      <div class="text-center p-6">
+       <div class="w-16 h-16 bg-emerald-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-bold text-white mb-2">Gecertificeerd</h3>
+       <p class="text-gray-400">Erkend installateur met alle benodigde certificeringen en verzekeringen.</p>
+      </div>
+      <div class="text-center p-6">
+       <div class="w-16 h-16 bg-emerald-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-bold text-white mb-2">Scherpe prijzen</h3>
+       <p class="text-gray-400">Rechtstreekse inkoop bij fabrikanten voor de beste prijs-kwaliteit verhouding.</p>
+      </div>
+      <div class="text-center p-6">
+       <div class="w-16 h-16 bg-emerald-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-bold text-white mb-2">Snelle installatie</h3>
+       <p class="text-gray-400">Gemiddeld binnen 2-4 weken geïnstalleerd door ons eigen team.</p>
+      </div>
+      <div class="text-center p-6">
+       <div class="w-16 h-16 bg-emerald-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-bold text-white mb-2">Volledige service</h3>
+       <p class="text-gray-400">Van advies tot onderhoud, wij regelen alles voor u.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- CTA Section -->
+   <section id="contact" class="py-16 sm:py-24 bg-gray-900 relative overflow-hidden">
+    <div class="absolute inset-0">
+     <div class="absolute top-0 right-0 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl opacity-50"></div>
+     <div class="absolute bottom-0 left-0 w-80 h-80 bg-green-600/10 rounded-full blur-3xl opacity-50"></div>
+    </div>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+     <div class="bg-gradient-to-br from-emerald-600 to-green-700 rounded-3xl p-8 sm:p-12 lg:p-16 text-center relative overflow-hidden">
+      <div class="absolute inset-0 opacity-10">
+       <svg class="w-full h-full" viewbox="0 0 100 100" preserveaspectratio="none"><pattern id="grid" width="10" height="10" patternunits="userSpaceOnUse">
+         <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5" />
+        </pattern> <rect width="100" height="100" fill="url(#grid)" />
+       </svg>
+      </div>
+      <div class="relative">
+       <h2 id="cta-title" class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">Klaar om te verduurzamen?</h2>
+       <p class="text-emerald-100 text-lg sm:text-xl mb-8 max-w-2xl mx-auto">Ontvang binnen 24 uur een vrijblijvende offerte op maat. Onze experts komen graag bij u langs voor een gratis adviesgesprek.</p>
+       <form id="contact-form" class="max-w-md mx-auto space-y-4"><input type="text" placeholder="Uw naam" class="w-full px-6 py-4 rounded-xl bg-white/10 backdrop-blur border border-white/20 text-white placeholder-emerald-200 focus:outline-none focus:ring-2 focus:ring-white/50" required> <input type="email" placeholder="Uw e-mailadres" class="w-full px-6 py-4 rounded-xl bg-white/10 backdrop-blur border border-white/20 text-white placeholder-emerald-200 focus:outline-none focus:ring-2 focus:ring-white/50" required> <input type="tel" placeholder="Uw telefoonnummer" class="w-full px-6 py-4 rounded-xl bg-white/10 backdrop-blur border border-white/20 text-white placeholder-emerald-200 focus:outline-none focus:ring-2 focus:ring-white/50"> <button id="cta-button" type="submit" class="w-full bg-white hover:bg-gray-100 text-emerald-700 px-8 py-4 rounded-xl font-bold text-lg transition-all hover:shadow-xl hover:scale-105"> Vraag een offerte aan → </button>
+       </form>
+       <p class="text-emerald-200 text-sm mt-6">📞 Of bel direct: <a href="tel:+31201234567" class="text-white font-semibold hover:underline">020 - 123 4567</a></p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="bg-gray-950 py-12 sm:py-16 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+      <div>
+       <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl flex items-center justify-center">
+         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+         </svg>
+        </div><span id="footer-company" class="text-xl font-bold text-white">GroenVooruit</span>
+       </div>
+       <p class="text-gray-400 text-sm">Uw partner in elektrische verduurzaming sinds 2010.</p>
+      </div>
+      <div>
+       <h4 class="text-white font-semibold mb-4">Producten</h4>
+       <ul class="space-y-2 text-gray-400 text-sm">
+        <li><a href="#" class="hover:text-emerald-400 transition-colors">Zonnepanelen</a></li>
+        <li><a href="#" class="hover:text-emerald-400 transition-colors">Thuisbatterijen</a></li>
+        <li><a href="#" class="hover:text-emerald-400 transition-colors">Warmtepompen</a></li>
+        <li><a href="#" class="hover:text-emerald-400 transition-colors">Laadpalen</a></li>
+       </ul>
+      </div>
+      <div>
+       <h4 class="text-white font-semibold mb-4">Bedrijf</h4>
+       <ul class="space-y-2 text-gray-400 text-sm">
+        <li><a href="#" class="hover:text-emerald-400 transition-colors">Over ons</a></li>
+        <li><a href="#" class="hover:text-emerald-400 transition-colors">Projecten</a></li>
+        <li><a href="#" class="hover:text-emerald-400 transition-colors">Vacatures</a></li>
+        <li><a href="#" class="hover:text-emerald-400 transition-colors">Contact</a></li>
+       </ul>
+      </div>
+      <div>
+       <h4 class="text-white font-semibold mb-4">Contact</h4>
+       <ul class="space-y-2 text-gray-400 text-sm">
+        <li>📍 Energiestraat 123, Amsterdam</li>
+        <li>📞 020 - 123 4567</li>
+        <li>✉️ info@groenvooruit.nl</li>
+       </ul>
+      </div>
+     </div>
+     <div class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p class="text-gray-500 text-sm">© 2024 GroenVooruit. Alle rechten voorbehouden.</p>
+      <div class="flex gap-4"><a href="#" class="w-10 h-10 bg-gray-800 hover:bg-emerald-600 rounded-full flex items-center justify-center transition-colors">
+        <svg class="w-5 h-5 text-white" fill="currentColor" viewbox="0 0 24 24">
+         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+        </svg></a> <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-emerald-600 rounded-full flex items-center justify-center transition-colors">
+        <svg class="w-5 h-5 text-white" fill="currentColor" viewbox="0 0 24 24">
+         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+        </svg></a> <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-emerald-600 rounded-full flex items-center justify-center transition-colors">
+        <svg class="w-5 h-5 text-white" fill="currentColor" viewbox="0 0 24 24">
+         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+        </svg></a>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      company_name: 'GroenVooruit',
+      hero_title: 'Verduurzaam uw woning',
+      hero_subtitle: 'Met zonnepanelen, thuisbatterijen en warmtepompen bespaart u op energiekosten én draagt u bij aan een groenere toekomst.',
+      products_title: 'Onze Oplossingen',
+      solar_title: 'Zonnepanelen',
+      battery_title: 'Thuisbatterijen',
+      heatpump_title: 'Warmtepompen',
+      cta_title: 'Klaar om te verduurzamen?',
+      cta_button: 'Vraag een offerte aan →',
+      primary_color: '#059669',
+      secondary_color: '#10b981',
+      accent_color: '#ffffff',
+      text_color: '#f3f4f6',
+      surface_color: '#111827'
+    };
+
+    async function onConfigChange(config) {
+      document.getElementById('nav-company').textContent = config.company_name || defaultConfig.company_name;
+      document.getElementById('footer-company').textContent = config.company_name || defaultConfig.company_name;
+      
+      const heroTitle = document.getElementById('hero-title');
+      const titleText = config.hero_title || defaultConfig.hero_title;
+      heroTitle.innerHTML = titleText.includes('woning') 
+        ? titleText.replace('woning', '<span class="gradient-text">woning</span>')
+        : titleText;
+      
+      document.getElementById('hero-subtitle').textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+      document.getElementById('products-title').textContent = config.products_title || defaultConfig.products_title;
+      document.getElementById('solar-title').textContent = config.solar_title || defaultConfig.solar_title;
+      document.getElementById('battery-title').textContent = config.battery_title || defaultConfig.battery_title;
+      document.getElementById('heatpump-title').textContent = config.heatpump_title || defaultConfig.heatpump_title;
+      document.getElementById('cta-title').textContent = config.cta_title || defaultConfig.cta_title;
+      document.getElementById('cta-button').textContent = config.cta_button || defaultConfig.cta_button;
+      document.getElementById('nav-cta').textContent = config.cta_button || defaultConfig.cta_button;
+
+      // Apply colors
+      const primary = config.primary_color || defaultConfig.primary_color;
+      const secondary = config.secondary_color || defaultConfig.secondary_color;
+      
+      document.documentElement.style.setProperty('--primary-color', primary);
+      document.documentElement.style.setProperty('--secondary-color', secondary);
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.surface_color || defaultConfig.surface_color,
+            set: (value) => {
+              config.surface_color = value;
+              window.elementSdk.setConfig({ surface_color: value });
+            }
+          },
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              config.primary_color = value;
+              window.elementSdk.setConfig({ primary_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.secondary_color || defaultConfig.secondary_color,
+            set: (value) => {
+              config.secondary_color = value;
+              window.elementSdk.setConfig({ secondary_color: value });
+            }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              config.accent_color = value;
+              window.elementSdk.setConfig({ accent_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['company_name', config.company_name || defaultConfig.company_name],
+        ['hero_title', config.hero_title || defaultConfig.hero_title],
+        ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
+        ['products_title', config.products_title || defaultConfig.products_title],
+        ['solar_title', config.solar_title || defaultConfig.solar_title],
+        ['battery_title', config.battery_title || defaultConfig.battery_title],
+        ['heatpump_title', config.heatpump_title || defaultConfig.heatpump_title],
+        ['cta_title', config.cta_title || defaultConfig.cta_title],
+        ['cta_button', config.cta_button || defaultConfig.cta_button]
+      ]);
+    }
+
+    // Initialize SDK
+    window.elementSdk.init({
+      defaultConfig,
+      onConfigChange,
+      mapToCapabilities,
+      mapToEditPanelValues
+    });
+
+    // Form handling
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const button = document.getElementById('cta-button');
+      const originalText = button.textContent;
+      button.textContent = '✓ Aanvraag verzonden!';
+      button.classList.add('bg-emerald-100');
+      
+      setTimeout(() => {
+        button.textContent = originalText;
+        button.classList.remove('bg-emerald-100');
+        this.reset();
+      }, 3000);
+    });
+
+    // Smooth scroll for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c9aed8fd5a7feb7',t:'MTc3MDM4Mzg0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
