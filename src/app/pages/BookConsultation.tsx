@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { CalendarCheck, CheckCircle, Shield, Clock, Phone, Video, Home, ChevronLeft, ChevronRight } from "lucide-react";
+import { CalendarCheck, CheckCircle, Shield, Clock, Phone, Home, ChevronLeft, ChevronRight } from "lucide-react";
 
 const TIME_SLOTS = ["09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00"];
 
@@ -37,7 +37,7 @@ export function BookConsultation() {
 
   const isWeekend = (day: number) => {
     const d = new Date(year, month, day);
-    return d.getDay() === 0 || d.getDay() === 6;
+    return d.getDay() === 0;
   };
   const isPast = (day: number) => {
     const d = new Date(year, month, day);
@@ -74,7 +74,6 @@ export function BookConsultation() {
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {[
                   { id: "thuis", icon: Home, label: "Bij u thuis" },
-                  { id: "online", icon: Video, label: "Online (video)" },
                   { id: "telefoon", icon: Phone, label: "Telefonisch" },
                 ].map(opt => (
                   <button key={opt.id} type="button" onClick={() => setConsultType(opt.id)}

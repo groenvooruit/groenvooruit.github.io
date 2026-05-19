@@ -7,11 +7,10 @@ const FAQS = [
   { q: "Wat is de terugverdientijd?", a: "De gemiddelde terugverdientijd ligt tussen de 5 en 7 jaar, afhankelijk van uw dakoriëntatie, verbruik en het aantal panelen. Met een thuisbatterij kunt u de besparing verder optimaliseren." },
   { q: "Heb ik een thuisbatterij nodig?", a: "Niet per se, maar het wordt steeds interessanter. Met de afbouw van de salderingsregeling is het slim om meer eigen stroom te gebruiken. Een batterij verhoogt uw eigenverbruik van ~35% naar ~70% of meer." },
   { q: "Hoe groot moet mijn thuisbatterij zijn?", a: "Dat hangt af van uw verbruik en het aantal zonnepanelen. Een gemiddeld huishouden (3.500 kWh/jaar) heeft genoeg aan 10 kWh. Ons modulaire systeem groeit mee: u kunt beginnen met 5 kWh en later uitbreiden tot 40 kWh." },
-  { q: "Wat houdt het gratis adviesgesprek in?", a: "Een vrijblijvend gesprek van 30-45 minuten, bij u thuis, online of telefonisch. We bespreken uw woning, verbruik en wensen, en geven een eerste inschatting van de mogelijkheden en besparing." },
-  { q: "Hoelang duurt de installatie?", a: "De installatie van zonnepanelen duurt meestal 1 dag. Een thuisbatterij erbij voegt maximaal een halve dag toe. We plannen alles in overleg met u." },
+  { q: "Wat houdt het gratis adviesgesprek in?", a: "Een vrijblijvend gesprek van 30-45 minuten bij u thuis. We bespreken uw woning, verbruik en wensen, en geven een eerste inschatting van de mogelijkheden en besparing." },
+  { q: "Hoelang duurt de installatie?", a: "De installatie van zonnepanelen en/of een thuisbatterij duurt 1-2 dagen. We plannen alles in overleg met u." },
   { q: "Welke garantie krijg ik?", a: "U krijgt 25 jaar productgarantie op de zonnepanelen, 10 jaar op de omvormer en thuisbatterij, en 10 jaar garantie op onze installatie." },
   { q: "Regelen jullie de subsidie?", a: "Ja, we informeren u over beschikbare subsidies en helpen bij de aanvraag waar mogelijk. Op dit moment zijn er diverse lokale en landelijke regelingen beschikbaar." },
-  { q: "Kan ik ook alleen een offerte aanvragen zonder adviesgesprek?", a: "Zeker! U kunt direct een offerte aanvragen via ons formulier. Op basis van uw gegevens stellen we een indicatieve offerte op. Voor een nauwkeuriger advies raden we wel een (gratis) gesprek aan." },
   { q: "In welke regio zijn jullie actief?", a: "We zijn gevestigd in Lisse en actief door heel Nederland. Ons team van installateurs is regionaal verspreid voor snelle service." },
 ];
 

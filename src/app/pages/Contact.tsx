@@ -21,9 +21,8 @@ export function Contact() {
               <h2 className="text-xl text-[#0f2a1a] mb-6" style={{ fontWeight: 600 }}>Neem contact op</h2>
               <div className="space-y-5 mb-8">
                 {[
-                  { icon: Phone, label: "Telefoon", value: "071 - 123 4567" },
+                  { icon: Phone, label: "Telefoon", value: "+31 6 83 37 76 45" },
                   { icon: Mail, label: "E-mail", value: "info@groenvooruit.nl" },
-                  { icon: MapPin, label: "Adres", value: "Linnaeuspark 16, 2163 KK Lisse" },
                   { icon: Clock, label: "Openingstijden", value: "Ma–Vr: 08:30–17:30" },
                 ].map((item, i) => (
                   <div key={i} className="flex gap-4">
@@ -36,10 +35,6 @@ export function Contact() {
                     </div>
                   </div>
                 ))}
-              </div>
-              {/* Map placeholder */}
-              <div className="w-full aspect-video rounded-xl bg-muted flex items-center justify-center text-muted-foreground">
-                <MapPin className="w-8 h-8 mr-2" /> Kaart: Linnaeuspark 16, Lisse
               </div>
             </div>
 

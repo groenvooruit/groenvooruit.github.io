@@ -154,10 +154,7 @@ export function SavingsTool() {
 
                 <div className="space-y-3">
                   <Link to="/adviesgesprek" className="flex items-center justify-center gap-2 w-full py-3 rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors text-[0.925rem]">
-                    Gratis adviesgesprek <ArrowRight className="w-4 h-4" />
-                  </Link>
-                  <Link to="/offerte" className="flex items-center justify-center gap-2 w-full py-3 rounded-lg border border-white/30 text-white hover:bg-white/10 transition-colors text-[0.925rem]">
-                    Direct offerte aanvragen
+                    Plan gratis adviesgesprek <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
               </div>

@@ -4,7 +4,7 @@ import { Phone, BarChart3, FileText, ClipboardCheck, Wrench, CheckCircle } from 
 const STEPS = [
   {
     icon: Phone, num: "1", title: "Kennismakingsgesprek",
-    desc: "We beginnen met een vrijblijvend gesprek. U vertelt over uw woning, verbruik en wensen. Dit kan telefonisch, online of bij u thuis.",
+    desc: "We beginnen met een vrijblijvend gesprek. U vertelt over uw woning, verbruik en wensen. Dit kan telefonisch of bij u thuis.",
     details: ["Geen kosten of verplichtingen", "Eerste inschatting van mogelijkheden", "Beantwoording van al uw vragen"]
   },
   {
@@ -18,14 +18,14 @@ const STEPS = [
     details: ["Advies over panelen, batterij of combinatie", "Indicatieve besparingsberekening", "Overzicht van subsidie mogelijkheden"]
   },
   {
-    icon: ClipboardCheck, num: "4", title: "Transparante offerte",
-    desc: "U ontvangt een gedetailleerde offerte waarin alle kosten helder zijn opgenomen. Geen kleine lettertjes.",
+    icon: ClipboardCheck, num: "4", title: "Transparant voorstel",
+    desc: "U ontvangt een gedetailleerd voorstel waarin alle kosten helder zijn opgenomen. Geen kleine lettertjes.",
     details: ["Vaste prijs, geen verrassingen achteraf", "Specificatie van alle materialen", "Planningsvoorstel voor installatie"]
   },
   {
     icon: Wrench, num: "5", title: "Vakkundige installatie",
     desc: "Onze gecertificeerde monteurs installeren het systeem. Wij regelen alles, inclusief de aanmelding bij uw netbeheerder.",
-    details: ["Installatie meestal in 1 dag", "Oplevering met uitleg en monitoring", "Alles netjes achtergelaten"]
+    details: ["Installatie binnen 2 weken", "Oplevering met uitleg en monitoring", "Alles netjes achtergelaten"]
   },
 ];
 

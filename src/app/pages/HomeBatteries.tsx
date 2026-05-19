@@ -1,14 +1,15 @@
+import { BatteryAnimation } from "../components/BatteryAnimation";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { CTABanner } from "../components/CTABanner";
 import { Battery, CheckCircle, Zap, Shield, TrendingUp, Layers } from "lucide-react";
 
-const BATTERY_IMG = "https://images.unsplash.com/photo-1766507679641-51002768af6b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob21lJTIwYmF0dGVyeSUyMHN0b3JhZ2UlMjBzeXN0ZW18ZW58MXx8fHwxNzc2MzQ0MTMxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
+import batteryImg from "../../imports/dPgne.jpg";
 
 const TIERS = [
-  { kwh: "5 kWh", label: "Compact", desc: "Ideaal voor klein verbruik of als aanvulling", price: "Vanaf €3.500", fit: "Appartement of klein huishouden" },
-  { kwh: "10 kWh", label: "Standaard", desc: "Perfect voor een gemiddeld huishouden", price: "Vanaf €5.900", fit: "Gezinswoning, 2-4 personen", popular: true },
-  { kwh: "20 kWh", label: "Groot", desc: "Voor huishoudens met hoger verbruik of EV", price: "Vanaf €9.500", fit: "Grote woning of elektrische auto" },
-  { kwh: "40 kWh", label: "Maximum", desc: "Volledige energieonafhankelijkheid", price: "Vanaf €16.500", fit: "Maximale zelfvoorzienendheid" },
+  { kwh: "5 kWh", label: "Compact", desc: "Ideaal voor klein verbruik of als aanvulling", price: "Op aanvraag", fit: "Appartement of klein huishouden" },
+  { kwh: "10 kWh", label: "Standaard", desc: "Perfect voor een gemiddeld huishouden", price: "Op aanvraag", fit: "Gezinswoning, 2-4 personen", popular: true },
+  { kwh: "20 kWh", label: "Groot", desc: "Voor huishoudens met hoger verbruik of EV", price: "Op aanvraag", fit: "Grote woning of elektrische auto" },
+  { kwh: "40 kWh", label: "Maximum", desc: "Volledige energieonafhankelijkheid", price: "Op aanvraag", fit: "Maximale zelfvoorzienendheid" },
 ];
 
 export function HomeBatteries() {
@@ -29,13 +30,25 @@ export function HomeBatteries() {
               </p>
               <CTABanner variant="compact" />
             </div>
-            <ImageWithFallback src={BATTERY_IMG} alt="Thuisbatterij systeem" className="rounded-2xl w-full aspect-[4/3] object-cover" />
+            <ImageWithFallback src={batteryImg} alt="Thuisbatterij systeem" className="rounded-2xl w-full object-contain" />
           </div>
         </div>
       </section>
 
       {/* Modular visual */}
       <section className="py-16 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl sm:text-3xl text-[#0f2a1a] mb-4" style={{ fontWeight: 600 }}>Zo werkt een thuisbatterij</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+              Overdag laden uw zonnepanelen de batterij op. 's Avonds en 's nachts gebruikt u de opgeslagen energie in uw woning.
+            </p>
+          </div>
+          <BatteryAnimation />
+        </div>
+      </section>
+
+      <section className="py-16 lg:py-24 bg-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-2xl sm:text-3xl text-[#0f2a1a] mb-4" style={{ fontWeight: 600 }}>Modulair en schaalbaar</h2>
@@ -68,7 +81,7 @@ export function HomeBatteries() {
             ))}
           </div>
           <p className="text-center text-muted-foreground text-[0.875rem] mt-6">
-            * Prijzen zijn indicatief en inclusief installatie. Exacte prijs na adviesgesprek.
+            * Vraag een vrijblijvend adviesgesprek aan voor een prijs op maat.
           </p>
         </div>
       </section>

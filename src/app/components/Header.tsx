@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router";
-import { Menu, X, Leaf, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import logoSrc from "../../imports/EWJrl_Nero_AI_Background_Remover_transparent_(1).png";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -14,12 +15,7 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-9 h-9 bg-primary rounded-lg flex items-center justify-center">
-              <Leaf className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-xl text-[#0f2a1a] tracking-tight" style={{ fontWeight: 600 }}>
-              GroenVooruit
-            </span>
+            <img src={logoSrc} alt="GroenVooruit" className="h-16 lg:h-20 w-auto object-contain" />
           </Link>
 
           {/* Desktop nav */}
@@ -39,19 +35,11 @@ export function Header() {
               </div>
             </div>
             <NavLink to="/werkwijze" active={isActive("/werkwijze")}>Werkwijze</NavLink>
-            <NavLink to="/bespaartool" active={isActive("/bespaartool")}>Bespaartool</NavLink>
-            <NavLink to="/kennisbank" active={isActive("/kennisbank")}>Kennisbank</NavLink>
             <NavLink to="/faq" active={isActive("/faq")}>FAQ</NavLink>
             <NavLink to="/contact" active={isActive("/contact")}>Contact</NavLink>
           </nav>
 
           <div className="hidden lg:flex items-center gap-3">
-            <Link
-              to="/offerte"
-              className="px-4 py-2.5 rounded-lg border border-primary text-primary hover:bg-secondary transition-colors text-[0.925rem]"
-            >
-              Offerte aanvragen
-            </Link>
             <Link
               to="/adviesgesprek"
               className="px-4 py-2.5 rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors text-[0.925rem]"
@@ -86,18 +74,9 @@ export function Header() {
               </div>
             )}
             <MobileLink to="/werkwijze" onClick={() => setOpen(false)}>Werkwijze</MobileLink>
-            <MobileLink to="/bespaartool" onClick={() => setOpen(false)}>Bespaartool</MobileLink>
-            <MobileLink to="/kennisbank" onClick={() => setOpen(false)}>Kennisbank</MobileLink>
             <MobileLink to="/faq" onClick={() => setOpen(false)}>FAQ</MobileLink>
             <MobileLink to="/contact" onClick={() => setOpen(false)}>Contact</MobileLink>
             <div className="pt-3 space-y-2">
-              <Link
-                to="/offerte"
-                onClick={() => setOpen(false)}
-                className="block text-center px-4 py-2.5 rounded-lg border border-primary text-primary"
-              >
-                Offerte aanvragen
-              </Link>
               <Link
                 to="/adviesgesprek"
                 onClick={() => setOpen(false)}

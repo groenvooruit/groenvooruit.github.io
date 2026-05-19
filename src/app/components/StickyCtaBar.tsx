@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { CalendarCheck, FileText } from "lucide-react";
+import { CalendarCheck } from "lucide-react";
 
 export function StickyCtaBar() {
   return (
@@ -9,13 +9,7 @@ export function StickyCtaBar() {
           to="/adviesgesprek"
           className="flex-1 flex items-center justify-center gap-2 py-3 rounded-lg bg-primary text-white text-[0.875rem]"
         >
-          <CalendarCheck className="w-4 h-4" /> Adviesgesprek
-        </Link>
-        <Link
-          to="/offerte"
-          className="flex-1 flex items-center justify-center gap-2 py-3 rounded-lg border border-primary text-primary text-[0.875rem]"
-        >
-          <FileText className="w-4 h-4" /> Offerte
+          <CalendarCheck className="w-4 h-4" /> Plan gratis adviesgesprek
         </Link>
       </div>
     </div>

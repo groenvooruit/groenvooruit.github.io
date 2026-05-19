@@ -3,12 +3,13 @@ import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { CTABanner } from "../components/CTABanner";
 import {
   Sun, Battery, PiggyBank, Shield, Award, Users, ArrowRight,
-  CalendarCheck, FileText, CheckCircle, Zap, TrendingDown, Leaf,
+  CalendarCheck, CheckCircle, Zap, TrendingDown, Leaf,
   Phone, Star, Clock
 } from "lucide-react";
 
-const HERO_IMG = "https://images.unsplash.com/photo-1771479755055-6a305f50845e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2xhciUyMHBhbmVscyUyMHJvb2Z0b3AlMjByZXNpZGVudGlhbHxlbnwxfHx8fDE3NzYzNDQxMzF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
-const CONSULT_IMG = "https://images.unsplash.com/flagged/photo-1574359980899-5cf19389d281?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2xhciUyMGVuZXJneSUyMGNvbnN1bHRhdGlvbiUyMG1lZXRpbmd8ZW58MXx8fHwxNzc2MzQ0MTMyfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
+const HERO_IMG = "https://images.unsplash.com/photo-1728291014119-392c27e7fead?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2xhciUyMHBhbmVscyUyMG1vZGVybiUyMGhvdXNlJTIwTmV0aGVybGFuZHN8ZW58MXx8fHwxNzc2NDQxNTE5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
+import consultImg from "../../imports/ChatGPT_Image_May_19__2026__04_16_41_PM.png";
+const CONSULT_IMG = consultImg;
 
 export function Home() {
   return (
@@ -32,9 +33,6 @@ export function Home() {
                 <Link to="/adviesgesprek" className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors">
                   <CalendarCheck className="w-5 h-5" /> Plan gratis adviesgesprek <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link to="/offerte" className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg border border-border hover:bg-muted transition-colors">
-                  <FileText className="w-5 h-5" /> Vraag offerte aan
-                </Link>
               </div>
               <div className="flex flex-wrap gap-x-6 gap-y-2 text-[0.875rem] text-muted-foreground">
                 <span className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-primary" /> 100% vrijblijvend</span>
@@ -44,17 +42,6 @@ export function Home() {
             </div>
             <div className="relative">
               <ImageWithFallback src={HERO_IMG} alt="Zonnepanelen op een woning" className="rounded-2xl shadow-xl w-full aspect-[4/3] object-cover" />
-              <div className="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-lg p-4 border border-border">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <TrendingDown className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-[0.8rem] text-muted-foreground">Gemiddelde besparing</p>
-                    <p className="text-lg text-[#0f2a1a]" style={{ fontWeight: 600 }}>&euro;1.200/jaar</p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -63,11 +50,9 @@ export function Home() {
       {/* Trust bar */}
       <section className="border-b border-border bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div className="grid grid-cols-2 gap-6 text-center">
             {[
-              { icon: Star, label: "4.9/5 klanttevredenheid", sub: "250+ reviews" },
               { icon: Award, label: "Erkend installateur", sub: "Gecertificeerd" },
-              { icon: Users, label: "1.500+ installaties", sub: "In heel Nederland" },
               { icon: Clock, label: "Reactie binnen 24 uur", sub: "Persoonlijk contact" },
             ].map((item, i) => (
               <div key={i} className="flex flex-col items-center gap-2">
@@ -163,7 +148,7 @@ export function Home() {
               { step: "1", title: "Kennismaking", desc: "Gratis en vrijblijvend adviesgesprek" },
               { step: "2", title: "Analyse", desc: "We analyseren uw woning en verbruik" },
               { step: "3", title: "Persoonlijk plan", desc: "Op maat gemaakt energiebesparingsplan" },
-              { step: "4", title: "Offerte", desc: "Transparante offerte zonder verrassingen" },
+              { step: "4", title: "Voorstel", desc: "Transparant voorstel zonder verrassingen" },
               { step: "5", title: "Installatie", desc: "Vakkundige installatie door gecertificeerde monteurs" },
             ].map((item, i) => (
               <div key={i} className="text-center">
@@ -183,33 +168,6 @@ export function Home() {
         </div>
       </section>
 
-      {/* Social proof */}
-      <section className="py-16 lg:py-24 bg-secondary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl text-[#0f2a1a] mb-4" style={{ fontWeight: 600 }}>Wat onze klanten zeggen</h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { name: "Familie De Vries", location: "Lisse", text: "Uitstekend advies en een vlekkeloze installatie. We besparen nu al meer dan verwacht!", rating: 5 },
-              { name: "Peter & Annemarie", location: "Hillegom", text: "De thuisbatterij was precies wat we nodig hadden. Professioneel team, duidelijke uitleg.", rating: 5 },
-              { name: "Sandra Bakker", location: "Noordwijk", text: "Eerlijk advies zonder druk. Ze hebben echt meegedacht over de beste oplossing voor ons huis.", rating: 5 },
-            ].map((review, i) => (
-              <div key={i} className="p-6 rounded-xl bg-white border border-border">
-                <div className="flex gap-1 mb-3">
-                  {Array.from({ length: review.rating }).map((_, j) => (
-                    <Star key={j} className="w-4 h-4 text-amber-400 fill-amber-400" />
-                  ))}
-                </div>
-                <p className="text-[0.925rem] text-muted-foreground mb-4 italic">"{review.text}"</p>
-                <p className="text-[0.875rem]" style={{ fontWeight: 500 }}>{review.name}</p>
-                <p className="text-[0.8rem] text-muted-foreground">{review.location}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Consultation image + CTA */}
       <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -223,7 +181,7 @@ export function Home() {
                 Tijdens een gratis adviesgesprek bespreken we uw situatie, wensen en mogelijkheden. We kijken naar uw dak, verbruik en budget om het beste plan te maken.
               </p>
               <ul className="space-y-3 mb-8">
-                {["Gratis en geheel vrijblijvend", "Bij u thuis of online", "Persoonlijk energiebesparingsadvies", "Binnen 24 uur een reactie"].map((item, i) => (
+                {["Gratis en geheel vrijblijvend", "Bij u thuis", "Persoonlijk energiebesparingsadvies", "Binnen 24 uur een reactie"].map((item, i) => (
                   <li key={i} className="flex items-center gap-3 text-[0.925rem]">
                     <CheckCircle className="w-5 h-5 text-primary shrink-0" /> {item}
                   </li>

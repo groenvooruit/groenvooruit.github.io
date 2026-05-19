@@ -3,7 +3,7 @@ import { CTABanner } from "../components/CTABanner";
 import { Sun, CheckCircle, ArrowRight, TrendingDown, Zap, Shield, Clock } from "lucide-react";
 import { Link } from "react-router";
 
-const SOLAR_IMG = "https://images.unsplash.com/photo-1771479755055-6a305f50845e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2xhciUyMHBhbmVscyUyMHJvb2Z0b3AlMjByZXNpZGVudGlhbHxlbnwxfHx8fDE3NzYzNDQxMzF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
+import solarImg from "../../imports/bdeac4d2-126e-4fe0-8d51-300046e633cc.jpg-1.jpeg";
 
 export function SolarPanels() {
   return (
@@ -23,7 +23,9 @@ export function SolarPanels() {
               </p>
               <CTABanner variant="compact" />
             </div>
-            <ImageWithFallback src={SOLAR_IMG} alt="Zonnepanelen op dak" className="rounded-2xl w-full aspect-[4/3] object-cover" />
+            <div className="rounded-2xl overflow-hidden w-full aspect-[4/3]">
+              <ImageWithFallback src={solarImg} alt="Zonnepanelen op dak" className="w-full h-full object-cover object-bottom" />
+            </div>
           </div>
         </div>
       </section>
@@ -57,12 +59,12 @@ export function SolarPanels() {
             <ul className="space-y-4">
               {[
                 "Gratis dakinspectie en advies op maat",
-                "A-merk panelen (o.a. SunPower, Longi, JA Solar)",
+                "A-merk panelen",
                 "Inclusief micro-omvormers of string-omvormer",
                 "Professionele installatie door gecertificeerde monteurs",
                 "Aanmelding bij uw netbeheerder geregeld",
                 "Monitoring app om uw opbrengst te volgen",
-                "25 jaar productgarantie, 10 jaar installatiegarantie",
+                "25 jaar productgarantie",
                 "Persoonlijke nazorg en onderhoudstips",
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
@@ -73,8 +75,8 @@ export function SolarPanels() {
             </ul>
           </div>
           <div className="text-center mt-8">
-            <Link to="/bespaartool" className="inline-flex items-center gap-2 text-primary" style={{ fontWeight: 500 }}>
-              Bereken uw besparing <ArrowRight className="w-4 h-4" />
+            <Link to="/adviesgesprek" className="inline-flex items-center gap-2 text-primary" style={{ fontWeight: 500 }}>
+              Plan een gratis adviesgesprek <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
