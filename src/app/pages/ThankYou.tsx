@@ -18,7 +18,7 @@ export function ThankYou() {
         <div className="bg-secondary rounded-xl p-6 mb-8 text-left space-y-3">
           <h3 className="text-[#0f2a1a]" style={{ fontWeight: 600 }}>Wat kunt u verwachten?</h3>
           <ul className="space-y-2 text-[0.925rem] text-muted-foreground">
-            <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" /> Bevestiging per e-mail</li>
+            <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" /> Bevestiging per e-mail binnen 24 uur</li>
             <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" /> Contact voorafgaand aan het gesprek</li>
             <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" /> Persoonlijk advies op maat</li>
           </ul>

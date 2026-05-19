@@ -23,7 +23,7 @@ export function Contact() {
                 {[
                   { icon: Phone, label: "Telefoon", value: "+31 6 83 37 76 45" },
                   { icon: Mail, label: "E-mail", value: "info@groenvooruit.nl" },
-                  { icon: Clock, label: "Openingstijden", value: "Ma–Vr: 08:30–17:30" },
+                  { icon: Clock, label: "Openingstijden", value: "Ma–Za: 08:30–21:30" },
                 ].map((item, i) => (
                   <div key={i} className="flex gap-4">
                     <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">

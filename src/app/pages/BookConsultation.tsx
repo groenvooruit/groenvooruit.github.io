@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { CalendarCheck, CheckCircle, Shield, Clock, Phone, Home, ChevronLeft, ChevronRight } from "lucide-react";
+import { CalendarCheck, CheckCircle, Shield, Clock, ChevronLeft, ChevronRight } from "lucide-react";
 
 const TIME_SLOTS = ["09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00"];
 
@@ -20,8 +20,9 @@ export function BookConsultation() {
   const [year, setYear] = useState(today.getFullYear());
   const [selectedDate, setSelectedDate] = useState<number | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
-  const [consultType, setConsultType] = useState("thuis");
   const [form, setForm] = useState({ name: "", email: "", phone: "", address: "", notes: "" });
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const { daysInMonth, offset } = getMonthDays(year, month);
   const update = (key: string, val: string) => setForm(f => ({ ...f, [key]: val }));
@@ -44,9 +45,38 @@ export function BookConsultation() {
     return d < new Date(today.getFullYear(), today.getMonth(), today.getDate());
   };
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    navigate("/bedankt?type=adviesgesprek");
+    if (!selectedDate || !selectedTime) return;
+    setSubmitting(true);
+    setError(null);
+    const data = new FormData();
+    data.append("access_key", "b60637fc-b995-48b2-b6e3-edac16bbf8b3");
+    data.append("subject", "Nieuw adviesgesprek aangevraagd – GroenVooruit");
+    data.append("from_name", "GroenVooruit website");
+    data.append("naam", form.name);
+    data.append("email", form.email);
+    data.append("telefoon", form.phone);
+    data.append("adres", form.address);
+    data.append("opmerkingen", form.notes);
+    data.append("datum", `${selectedDate} ${MONTHS[month]} ${year}`);
+    data.append("tijd", selectedTime);
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: data,
+      });
+      const json = await response.json();
+      if (json.success) {
+        navigate("/bedankt?type=adviesgesprek");
+      } else {
+        setError("Er ging iets mis bij het verzenden. Probeer het opnieuw of bel ons.");
+      }
+    } catch {
+      setError("Er ging iets mis bij het verzenden. Probeer het opnieuw of bel ons.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -68,22 +98,6 @@ export function BookConsultation() {
       <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <form onSubmit={submit}>
-            {/* Consult type */}
-            <div className="mb-8">
-              <label className="block mb-3 text-[0.925rem]" style={{ fontWeight: 500 }}>Type gesprek</label>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {[
-                  { id: "thuis", icon: Home, label: "Bij u thuis" },
-                  { id: "telefoon", icon: Phone, label: "Telefonisch" },
-                ].map(opt => (
-                  <button key={opt.id} type="button" onClick={() => setConsultType(opt.id)}
-                    className={`flex items-center gap-2 px-4 py-3 rounded-lg border text-[0.925rem] transition-colors ${consultType === opt.id ? "border-primary bg-primary/5 text-primary" : "border-border text-muted-foreground hover:border-primary/30"}`}>
-                    <opt.icon className="w-4 h-4" /> {opt.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
             <div className="grid lg:grid-cols-2 gap-8 mb-8">
               {/* Calendar */}
               <div className="p-6 rounded-xl border border-border">
@@ -162,8 +176,8 @@ export function BookConsultation() {
                     className="w-full px-3 py-2.5 rounded-lg border border-border bg-input-background text-[0.925rem]" />
                 </div>
                 <div>
-                  <label className="block mb-1.5 text-[0.925rem]">Adres {consultType === "thuis" ? "*" : "(optioneel)"}</label>
-                  <input type="text" required={consultType === "thuis"} value={form.address} onChange={e => update("address", e.target.value)}
+                  <label className="block mb-1.5 text-[0.925rem]">Adres *</label>
+                  <input type="text" required value={form.address} onChange={e => update("address", e.target.value)}
                     className="w-full px-3 py-2.5 rounded-lg border border-border bg-input-background text-[0.925rem]" />
                 </div>
               </div>
@@ -175,10 +189,13 @@ export function BookConsultation() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 items-start">
-              <button type="submit" disabled={!selectedDate || !selectedTime}
-                className="px-8 py-3 rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-                Adviesgesprek bevestigen
-              </button>
+              <div className="flex flex-col gap-2">
+                <button type="submit" disabled={!selectedDate || !selectedTime || submitting}
+                  className="px-8 py-3 rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                  {submitting ? "Bezig met verzenden..." : "Adviesgesprek bevestigen"}
+                </button>
+                {error && <p className="text-[0.875rem] text-red-600">{error}</p>}
+              </div>
               <div className="flex flex-wrap gap-4 text-[0.875rem] text-muted-foreground">
                 <span className="flex items-center gap-1"><CheckCircle className="w-4 h-4 text-primary" /> Gratis</span>
                 <span className="flex items-center gap-1"><CheckCircle className="w-4 h-4 text-primary" /> Vrijblijvend</span>
