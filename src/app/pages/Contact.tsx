@@ -4,6 +4,33 @@ import { useState } from "react";
 
 export function Contact() {
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setError(null);
+    const data = new FormData(e.currentTarget);
+    data.append("access_key", "b60637fc-b995-48b2-b6e3-edac16bbf8b3");
+    data.append("from_name", "GroenVooruit website");
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: data,
+      });
+      const json = await response.json();
+      if (json.success) {
+        setSent(true);
+      } else {
+        setError("Er ging iets mis bij het verzenden. Probeer het opnieuw of bel ons.");
+      }
+    } catch {
+      setError("Er ging iets mis bij het verzenden. Probeer het opnieuw of bel ons.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <div className="pb-16 lg:pb-0">
@@ -46,26 +73,28 @@ export function Contact() {
                   <p className="text-muted-foreground">We nemen zo snel mogelijk contact met u op.</p>
                 </div>
               ) : (
-                <form onSubmit={e => { e.preventDefault(); setSent(true); }} className="space-y-5">
+                <form onSubmit={onSubmit} className="space-y-5">
+                  <input type="hidden" name="subject" value="Nieuw contactbericht – GroenVooruit" />
                   <div>
                     <label className="block mb-1.5 text-[0.925rem]">Naam *</label>
-                    <input type="text" required className="w-full px-3 py-2.5 rounded-lg border border-border bg-input-background text-[0.925rem]" />
+                    <input type="text" name="naam" required className="w-full px-3 py-2.5 rounded-lg border border-border bg-input-background text-[0.925rem]" />
                   </div>
                   <div>
                     <label className="block mb-1.5 text-[0.925rem]">E-mailadres *</label>
-                    <input type="email" required className="w-full px-3 py-2.5 rounded-lg border border-border bg-input-background text-[0.925rem]" />
+                    <input type="email" name="email" required className="w-full px-3 py-2.5 rounded-lg border border-border bg-input-background text-[0.925rem]" />
                   </div>
                   <div>
                     <label className="block mb-1.5 text-[0.925rem]">Onderwerp</label>
-                    <input type="text" className="w-full px-3 py-2.5 rounded-lg border border-border bg-input-background text-[0.925rem]" />
+                    <input type="text" name="onderwerp" className="w-full px-3 py-2.5 rounded-lg border border-border bg-input-background text-[0.925rem]" />
                   </div>
                   <div>
                     <label className="block mb-1.5 text-[0.925rem]">Bericht *</label>
-                    <textarea required rows={5} className="w-full px-3 py-2.5 rounded-lg border border-border bg-input-background text-[0.925rem] resize-none" />
+                    <textarea name="bericht" required rows={5} className="w-full px-3 py-2.5 rounded-lg border border-border bg-input-background text-[0.925rem] resize-none" />
                   </div>
-                  <button type="submit" className="w-full py-3 rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors">
-                    Versturen
+                  <button type="submit" disabled={submitting} className="w-full py-3 rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                    {submitting ? "Bezig met verzenden..." : "Versturen"}
                   </button>
+                  {error && <p className="text-[0.875rem] text-red-600">{error}</p>}
                 </form>
               )}
             </div>
