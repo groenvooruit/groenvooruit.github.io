@@ -90,7 +90,7 @@ export function BookConsultation() {
             Plan uw gratis adviesgesprek
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Kies een datum en tijdstip dat u uitkomt. Ons gesprek is geheel vrijblijvend en duurt ongeveer 30-45 minuten.
+            Geef uw voorkeursdatum en -tijdstip door. We nemen contact met u op om de afspraak definitief te bevestigen. Het gesprek is geheel vrijblijvend en duurt ongeveer 30-45 minuten.
           </p>
         </div>
       </section>
@@ -133,7 +133,7 @@ export function BookConsultation() {
               {/* Time slots */}
               <div>
                 <p className="mb-3 text-[0.925rem]" style={{ fontWeight: 500 }}>
-                  {selectedDate ? `Beschikbare tijden op ${selectedDate} ${MONTHS[month]}` : "Kies eerst een datum"}
+                  {selectedDate ? `Voorkeurstijd op ${selectedDate} ${MONTHS[month]}` : "Kies eerst een voorkeursdatum"}
                 </p>
                 {selectedDate ? (
                   <div className="grid grid-cols-2 gap-2">
